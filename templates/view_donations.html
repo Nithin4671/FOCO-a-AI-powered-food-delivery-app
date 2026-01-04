@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Donations | FoodConnect</title>
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Available Food Donations</h2>
+
+    <!-- Donations table -->
+    <table class="donation-table">
+        <thead>
+            <tr>
+                <th>Donor</th>
+                <th>Food Type</th>
+                <th>Quantity</th>
+                <th>Location</th>
+                <th>Expiry Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for d in donations %}
+            <tr>
+                <td>{{ d.donor_name }}</td>
+                <td>{{ d.food_type }}</td>
+                <td>{{ d.quantity }}</td>
+                <td>{{ d.location }}</td>
+                <td>{{ d.expiry_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Navigation -->
+    <p class="auth-link">
+        <a href="/dashboard">⬅ Back to Dashboard</a>
+    </p>
+</div>
+
+</body>
+</html>

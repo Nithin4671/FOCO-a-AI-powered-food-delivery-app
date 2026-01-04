@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | FoodConnect</title>
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+    <div class="logo">FOCO</div>
+
+    <div class="nav-links">
+        <a href="/add-donation">Add Donation</a>
+        <a href="/view-donations">View Donations</a>
+        <a href="/logout" class="logout">Logout</a>
+    </div>
+</nav>
+
+<!-- ================= DASHBOARD ================= -->
+<main class="dashboard-container">
+
+    <h1>Welcome to FoodConnect 🎉</h1>
+    <p class="subtitle">AI-powered food donation platform</p>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>Total Donations</h3>
+            <p>{{ total_donations }}</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Total Meals Available</h3>
+            <p>{{ total_meals }}</p>
+        </div>
+    </div>
+
+</main>
+
+<!-- ================= AI INSIGHTS ================= -->
+<section class="ai-section">
+    <h2>🤖 AI Insights</h2>
+
+    <div class="ai-cards">
+        <div class="ai-card urgent">
+            <h3>Urgent Donations</h3>
+            <p id="urgent-count">--</p>
+            <span>Expiring in 2 days</span>
+        </div>
+
+        <div class="ai-card">
+            <h3>Total Donations</h3>
+            <p id="ai-donations">--</p>
+        </div>
+
+        <div class="ai-card">
+            <h3>Total Meals</h3>
+            <p id="ai-meals">--</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= AI DATA FETCH ================= -->
+<script>
+    fetch("/ai-insights")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("urgent-count").innerText = data.urgent_donations;
+            document.getElementById("ai-donations").innerText = data.total_donations;
+            document.getElementById("ai-meals").innerText = data.total_meals;
+        })
+        .catch(error => console.error("AI Insights error:", error));
+</script>
+
+</body>
+</html>

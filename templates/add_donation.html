@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Donation | FoodConnect</title>
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="page-center">
+    <div class="card">
+        <h2>Add Food Donation</h2>
+
+        <!-- Donation form -->
+        <form method="POST" action="/add-donation">
+            <input
+                type="text"
+                name="donor_name"
+                placeholder="Donor Name"
+                required
+            >
+
+            <input
+                type="text"
+                name="food_type"
+                placeholder="Food Type"
+                required
+            >
+
+            <input
+                type="number"
+                name="quantity"
+                placeholder="Quantity"
+                min="1"
+                required
+            >
+
+            <input
+                type="text"
+                name="location"
+                placeholder="Location"
+                required
+            >
+
+            <input
+                type="date"
+                name="expiry_date"
+                required
+            >
+
+            <button type="submit">Submit Donation</button>
+        </form>
+
+        <!-- Navigation -->
+        <p class="auth-link">
+            <a href="/dashboard">⬅ Back to Dashboard</a>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
