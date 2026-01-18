@@ -4,6 +4,7 @@ FoodConnect is an AI-powered food donation management platform designed to reduc
 
 The system connects food donors with NGOs by enabling easy donation tracking, monitoring expiry dates, and providing AI-based insights for urgent food distribution.
 
+deployed URL : https://foco-a-ai-powered-food-delivery-app.onrender.com/register
 ---
 
 ## Features
