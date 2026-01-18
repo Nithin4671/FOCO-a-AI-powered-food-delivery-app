@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, session, jsonify
 from datetime import date, timedelta
 from functools import wraps
 import sqlite3
-import os
 
 app = Flask(__name__)
 app.secret_key = "foodconnect_secret"
@@ -106,10 +105,10 @@ def register():
             )
             conn.commit()
         except:
-            return render_template("register.html", error="Email already exists")
-        finally:
             conn.close()
+            return render_template("register.html", error="Email already exists")
 
+        conn.close()
         return redirect("/login")
 
     return render_template("register.html")
